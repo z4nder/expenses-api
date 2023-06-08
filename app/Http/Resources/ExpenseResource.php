@@ -12,8 +12,8 @@ class ExpenseResource extends JsonResource
         return [
             'id' => $this->id,
             'description' => $this->description,
-            'value' => $this->value,
-            'formatted_value' => 'R$ '.str_replace(",",".", $this->value),
+            'value' =>(float) $this->value,
+            'formatted_value' => 'R$ '.str_replace(",",".", (float) $this->value),
             'date' => $this->date->format('d/m/Y'),
         ];
     }

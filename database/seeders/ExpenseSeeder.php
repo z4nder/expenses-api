@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Expense;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class ExpenseSeeder extends Seeder

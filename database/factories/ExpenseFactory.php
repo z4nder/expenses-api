@@ -11,7 +11,7 @@ class ExpenseFactory extends Factory
         return [
             'description' => fake()->name(),
             'date' => fake()->date(),
-            'value' => fake()->randomFloat(2, 1, 1500)
+            'value' => fake()->randomFloat(2, 1, 1500),
         ];
     }
 }

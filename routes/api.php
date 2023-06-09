@@ -12,4 +12,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 
 Route::prefix('expenses')->middleware('auth:sanctum')->name('expenses.')->group(function () {
     Route::get('/', [ExpenseController::class, 'index'])->name('index');
+    Route::post('/', [ExpenseController::class, 'store'])->name('store');
 });

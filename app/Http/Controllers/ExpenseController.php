@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Expense\ExpenseStoreRequest;
 use App\Http\Resources\ExpenseResource;
 use App\Mail\ExpenseCreated;
+use App\Models\Expense;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -33,9 +34,11 @@ class ExpenseController extends Controller
         return response()->json(new ExpenseResource($expense), Response::HTTP_CREATED);
     }
 
-    public function show(string $id)
+    public function show(Expense $expense)
     {
-        //
+        $this->authorize('show', $expense);
+
+        return new ExpenseResource($expense);
     }
 
     public function update(Request $request, string $id)

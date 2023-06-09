@@ -4,8 +4,8 @@ use App\Http\Resources\ExpenseResource;
 use App\Models\Expense;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
-use Symfony\Component\HttpFoundation\Response;
 use function Pest\Laravel\getJson;
+use Symfony\Component\HttpFoundation\Response;
 
 it('should be list all user expenses', function () {
     $user = User::factory()->create();
@@ -23,5 +23,5 @@ it('should be list all user expenses', function () {
 
 it('should be not unauthorized if not auth', function () {
     $response = getJson(route('expenses.index'))->assertStatus(Response::HTTP_UNAUTHORIZED)->json();
-    expect($response)->toMatchArray(["message" => "Unauthenticated."]);
+    expect($response)->toMatchArray(['message' => 'Unauthenticated.']);
 });

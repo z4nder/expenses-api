@@ -13,13 +13,13 @@ class Expense extends Model
     protected $fillable = [
         'description',
         'date',
-        'value'
+        'value',
     ];
 
-        protected $casts = [
-            'date' => 'datetime',
-            'value' => 'float',
-        ];
+    protected $casts = [
+        'date' => 'datetime',
+        'value' => 'float',
+    ];
 
     public function user()
     {
@@ -29,7 +29,7 @@ class Expense extends Model
     protected function formattedValue(): Attribute
     {
         return new Attribute(
-            get: fn () => 'R$ '.str_replace(".",",", (float) $this->value),
+            get: fn () => 'R$ '.str_replace('.', ',', (float) $this->value),
         );
     }
 }

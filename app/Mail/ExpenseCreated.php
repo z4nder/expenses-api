@@ -39,7 +39,7 @@ class ExpenseCreated extends Mailable implements ShouldQueue
     {
         return new Content(
             view: 'mail.expense_created',
-            with:  ['expense' => $this->expense]
+            with: ['expense' => $this->expense]
         );
     }
 

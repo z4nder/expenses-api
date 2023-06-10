@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Expense\ExpenseStoreRequest;
+use App\Http\Requests\Expense\ExpenseUpdateRequest;
 use App\Http\Resources\ExpenseResource;
 use App\Mail\ExpenseCreated;
 use App\Models\Expense;
@@ -34,20 +35,30 @@ class ExpenseController extends Controller
         return response()->json(new ExpenseResource($expense), Response::HTTP_CREATED);
     }
 
-    public function show(Expense $expense)
+    public function show(Expense $expense): ExpenseResource
     {
-        $this->authorize('show', $expense);
+        $this->authorize('view', $expense);
 
         return new ExpenseResource($expense);
     }
 
-    public function update(Request $request, string $id)
+    public function update(ExpenseUpdateRequest $request, Expense $expense): ExpenseResource
     {
-        //
+        $this->authorize('view', $expense);
+
+        $inputs = $request->validated();
+
+        $expense->update($inputs);
+
+        return new ExpenseResource($expense);
     }
 
-    public function destroy(string $id)
+    public function destroy(Expense $expense)
     {
-        //
+        $this->authorize('view', $expense);
+
+        $expense->delete();
+
+        return response()->json(['message' => 'Expense deleted successfully']);
     }
 }

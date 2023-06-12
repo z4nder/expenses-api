@@ -1,3 +1,6 @@
+## Postman API Doc 
+- https://documenter.getpostman.com/view/6902007/2s93sdYBgY
+
 ## Requisitos
 
 - PHP 8.*

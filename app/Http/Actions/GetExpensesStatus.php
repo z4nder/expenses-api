@@ -12,7 +12,7 @@ class GetExpensesStatus
         return [
             ['label' => 'Ultimos 30 dias', 'value' => self::getTotalExpensesByPeriod($user, 30)],
             ['label' => 'Ultimos 15 dias', 'value' => self::getTotalExpensesByPeriod($user, 15)],
-            ['label' => 'Ultimos 7 dias', 'value' => self::getTotalExpensesByPeriod($user, 7)]
+            ['label' => 'Ultimos 7 dias', 'value' => self::getTotalExpensesByPeriod($user, 7)],
         ];
     }
 
@@ -21,11 +21,11 @@ class GetExpensesStatus
         $startDate = Carbon::now()->format('Y-m-d');
         $endDate = Carbon::now()->subDays($range)->format('Y-m-d');
 
-        $total =  $user->expenses()
-            ->whereDate('date','<=', $startDate
-            )->whereDate('date','>=', $endDate)
+        $total = $user->expenses()
+            ->whereDate('date', '<=', $startDate
+            )->whereDate('date', '>=', $endDate)
             ->sum('value');
 
-       return 'R$ '.str_replace('.', ',', (float) $total);
+        return 'R$ '.str_replace('.', ',', (float) $total);
     }
 }

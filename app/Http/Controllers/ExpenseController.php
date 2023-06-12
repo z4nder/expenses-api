@@ -64,6 +64,6 @@ class ExpenseController extends Controller
 
     public function expenseStatus(): JsonResponse
     {
-       return response()->json(GetExpensesStatus::execute(auth()->user()));
+        return response()->json(GetExpensesStatus::execute(auth()->user()));
     }
 }

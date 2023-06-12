@@ -6,7 +6,7 @@ services:
         networks:
             - personal-network
         environment:
-            MYSQL_ROOT_PASSWORD: root
+            MYSQL_ROOT_PASSWORD: password
             MYSQL_DATABASE: laravel
             MYSQL_USER: user
             MYSQL_PASSWORD: password

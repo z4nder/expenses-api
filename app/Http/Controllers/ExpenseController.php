@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Actions\GetExpensesStatus;
 use App\Http\Requests\Expense\ExpenseStoreRequest;
 use App\Http\Requests\Expense\ExpenseUpdateRequest;
 use App\Http\Resources\ExpenseResource;
 use App\Mail\ExpenseCreated;
 use App\Models\Expense;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,5 +60,10 @@ class ExpenseController extends Controller
         $expense->delete();
 
         return response()->json(['message' => 'Expense deleted successfully']);
+    }
+
+    public function expenseStatus(): JsonResponse
+    {
+       return response()->json(GetExpensesStatus::execute(auth()->user()));
     }
 }

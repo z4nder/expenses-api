@@ -16,3 +16,7 @@ Route::prefix('expenses')->middleware('auth:sanctum')->name('expenses.')->group(
     Route::put('/{expense}', [ExpenseController::class, 'update'])->name('update');
     Route::delete('/{expense}', [ExpenseController::class, 'destroy'])->name('destroy');
 });
+
+Route::prefix('status')->middleware('auth:sanctum')->name('status.')->group(function () {
+    Route::get('/expense', [ExpenseController::class, 'expenseStatus'])->name('expense');
+});

@@ -15,6 +15,7 @@ class ExpenseResource extends JsonResource
             'value' => (float) $this->value,
             'formatted_value' => $this->formatted_value,
             'date' => $this->date->format('d/m/Y'),
+            'default_date_format' => $this->date->format('Y-m-d'),
         ];
     }
 }
